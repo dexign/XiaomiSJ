@@ -133,7 +133,7 @@ def parse(String description) {
 
 def levelEvent(curtainLevel) {
 	def windowShadeStatus = ""
-	if(mode == true) {
+	if(mode == false) {
 		if (curtainLevel == 100) {
 			log.info "Just Closed"
 			windowShadeStatus = "closed"
@@ -206,7 +206,7 @@ def setLevel(level) {
     } else if (level < currentLevel) {
         sendEvent(name: "windowShade", value: "closing")
     }
-	if(mode == true){
+	if(mode == false){
 		log.info "Set Level: ${level}%"
 		def f = (100 - level) as int
 		String hex = Integer.toHexString(Float.floatToIntBits(f)).toUpperCase()
